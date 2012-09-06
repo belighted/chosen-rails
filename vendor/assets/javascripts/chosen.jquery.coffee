@@ -108,8 +108,7 @@ class Chosen extends AbstractChosen
   container_mousedown: (evt) ->
     if !@is_disabled
       target_closelink =  if evt? then ($ evt.target).hasClass "search-choice-close" else false
-      if evt and evt.type is "mousedown" and not @results_showing
-        evt.stopPropagation()
+      evt.stopPropagation()
       if not @pending_destroy_click and not target_closelink
         if not @active_field
           @search_field.val "" if @is_multiple
@@ -328,7 +327,7 @@ class Chosen extends AbstractChosen
     this.results_reset_cleanup()
     @form_field_jq.trigger "change"
     this.results_hide() if @active_field
-  
+
   results_reset_cleanup: ->
     @selected_item.find("abbr").remove()
 
